@@ -282,13 +282,14 @@ section {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: var(--muted);
-    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 16px;
 }
 
 .switch-row input,
-.radio-row input {
-    accent-color: var(--pink-500);
+.radio-row input[type="radio"] {
+    margin: 0;
+    flex-shrink: 0;
 }
 
 .ghost-button {

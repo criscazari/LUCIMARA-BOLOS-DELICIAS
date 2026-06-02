@@ -31,7 +31,7 @@ const initialProducts = [
     },
     {
         id: "bolo-caseiro-fatia",
-        name: "Bolo Caseiro em Fatias",
+        name: "Pão Caseiro em Fatias",
         description: "Massa amarelinha, macia e com sabor de bolo feito em casa.",
         price: 8,
         category: "Fatias",

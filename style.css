@@ -613,17 +613,7 @@ section {
     gap: 14px;
 }
 
-fieldset {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
 
-.radio-row {
-    display: flex;
-    align-items: center;
-    font-weight: 600;
-}
 .customer-form label,
 .customer-form fieldset {
     display: grid;

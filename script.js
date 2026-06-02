@@ -2,15 +2,15 @@ const WHATSAPP_NUMBER = "5518981010315";
 const DELIVERY_FEE = 6;
 const PRODUCT_VERSION = "real-photos-2026-06-02";
 const ADMIN_USERS = [
-    { user: "adminLu", password: "boasorte26" },
+    { user: "adminLu", password: "senha26" },
     { user: "admin", password: "AdmTi26" },
 ];
 
 const initialProducts = [
     {
         id: "pao-caseiro",
-        name: "Pao Caseiro",
-        description: "Pao macio, douradinho e feito no capricho.",
+        name: "Mini Bolo Vulcão",
+        description: "Bolo fofinho coberto com uma deliciosa e cremosa cobertura que transborda por todos os lados. Uma explosão de sabor em cada pedaço!.",
         price: 12,
         category: "Paes",
         available: true,

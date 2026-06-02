@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucimara Bolos e Delicias</title>
+    <meta name="description" content="Cardapio online da Lucimara Bolos e Delicias em Ilha Solteira e regiao. Faca seu pedido pelo WhatsApp.">
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="#inicio" aria-label="Lucimara Bolos e Delicias">
+            <img class="brand-logo" src="logo-lucimara.jpeg" alt="Logo Lucimara Bolos e Delicias">
+            <span>
+                <strong>Lucimara</strong>
+                <small>Bolos e Delicias</small>
+            </span>
+        </a>
+        <nav class="nav">
+            <a href="#cardapio">Cardapio</a>
+            <a href="#desejados">Mais desejados</a>
+            <a href="#pedido">Pedido</a>
+        </nav>
+        <button class="store-toggle" id="storeToggle" type="button">Modo loja</button>
+    </header>
+
+    <main id="inicio">
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">Doces fresquinhos todos os dias em Ilha Solteira-SP</p>
+                <h1>Lucimara Bolos e Delicias</h1>
+                <p>Escolha os doces disponiveis hoje, monte seu pedido e envie direto para o WhatsApp da loja.</p>
+                <div class="hero-actions">
+                    <a class="primary-link" href="#cardapio">Ver cardapio do dia</a>
+                    <a class="secondary-link" href="#pedido">Montar pedido</a>
+                </div>
+            </div>
+            <div class="hero-photo" aria-label="Bolo confeitado com frutas">
+                <img src="assets/bolo-chocolate.png" alt="Bolo de chocolate com cobertura">
+            </div>
+        </section>
+
+        <section class="store-panel" id="storePanel" hidden>
+            <div class="section-heading">
+                <p class="eyebrow">Controle rapido</p>
+                <h2>Painel da loja</h2>
+                <p>Marque o que aparece no cardapio do dia e o que ainda tem em estoque.</p>
+            </div>
+            <div class="admin-grid" id="adminGrid"></div>
+            <div class="store-panel-actions">
+                <button class="ghost-button" id="resetProducts" type="button">Restaurar produtos iniciais</button>
+                <button class="ghost-button" id="logoutAdmin" type="button">Sair do modo loja</button>
+            </div>
+        </section>
+
+        <section id="desejados" class="featured-section">
+            <div class="section-heading">
+                <p class="eyebrow">Queridinhos dos clientes</p>
+                <h2>Mais desejados disponiveis hoje</h2>
+            </div>
+            <div class="carousel-shell">
+                <button class="carousel-btn" id="prevFeatured" type="button" aria-label="Produto anterior">&lsaquo;</button>
+                <div class="featured-track" id="featuredTrack" aria-live="polite"></div>
+                <button class="carousel-btn" id="nextFeatured" type="button" aria-label="Proximo produto">&rsaquo;</button>
+            </div>
+        </section>
+
+        <section id="cardapio" class="menu-section">
+            <div class="section-heading menu-heading">
+                <div>
+                    <p class="eyebrow">Cardapio do dia</p>
+                    <h2>Escolha seus doces</h2>
+                </div>
+                <div class="filters" id="filters"></div>
+            </div>
+            <div class="menu-grid" id="menuGrid"></div>
+        </section>
+
+        <section id="pedido" class="order-section">
+            <div class="section-heading">
+                <p class="eyebrow">Finalizar</p>
+                <h2>Seu pedido</h2>
+            </div>
+            <div class="order-layout">
+                <form class="customer-form" id="customerForm">
+                    <label>
+                        Nome do cliente
+                        <input id="customerName" type="text" placeholder="Ex: Ana Paula" required>
+                    </label>
+                    <fieldset>
+                        <legend>Entrega</legend>
+                        <label class="radio-row">
+                            <input type="radio" name="deliveryType" value="retirada" checked>
+                            Retirada no local
+                        </label>
+                        <label class="radio-row">
+                            <input type="radio" name="deliveryType" value="delivery">
+                            Delivery (+ R$ 6,00)
+                        </label>
+                    </fieldset>
+                    <label id="addressField" hidden>
+                        Endereco para entrega
+                        <input id="customerAddress" type="text" placeholder="Rua, numero, bairro">
+                    </label>
+                    <fieldset>
+                        <legend>Forma de pagamento</legend>
+                        <label class="radio-row">
+                            <input type="radio" name="paymentMethod" value="Dinheiro" checked>
+                            Dinheiro
+                        </label>
+                        <label class="radio-row">
+                            <input type="radio" name="paymentMethod" value="Cartao (Debito/Credito)">
+                            Cartao (Debito/Credito)
+                        </label>
+                        <label class="radio-row">
+                            <input type="radio" name="paymentMethod" value="Pix">
+                            Pix
+                        </label>
+                    </fieldset>
+                    <label>
+                        Observacoes
+                        <textarea id="orderNotes" rows="3" placeholder="Ex: mandar troco, ponto de referencia, sabor preferido..."></textarea>
+                    </label>
+                </form>
+
+                <aside class="cart-card">
+                    <div class="cart-header">
+                        <h3>Itens escolhidos</h3>
+                        <button class="link-button" id="clearCart" type="button">Limpar</button>
+                    </div>
+                    <div class="cart-items" id="cartItems"></div>
+                    <div class="totals">
+                        <div><span>Produtos</span><strong id="subtotal">R$ 0,00</strong></div>
+                        <div><span>Entrega</span><strong id="deliveryFee">R$ 0,00</strong></div>
+                        <div class="grand-total"><span>Total</span><strong id="grandTotal">R$ 0,00</strong></div>
+                    </div>
+                    <button class="whatsapp-order" id="sendOrder" type="button">Enviar pedido pelo WhatsApp</button>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <div class="admin-modal" id="adminModal" hidden>
+        <div class="admin-login" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+            <button class="modal-close" id="closeAdminModal" type="button" aria-label="Fechar login">x</button>
+            <p class="eyebrow">Acesso restrito</p>
+            <h2 id="adminTitle">Entrar no modo loja</h2>
+            <form id="adminLoginForm">
+                <label>
+                    Usuario
+                    <input id="adminUser" type="text" autocomplete="username" required>
+                </label>
+                <label>
+                    Senha
+                    <input id="adminPassword" type="password" autocomplete="current-password" required>
+                </label>
+                <p class="login-error" id="loginError" hidden>Usuario ou senha invalidos.</p>
+                <button class="whatsapp-order" type="submit">Acessar painel</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="floating-whatsapp" id="whatsappMenu">
+        <button class="whatsapp-fab" id="whatsappFab" type="button" aria-expanded="false" aria-controls="whatsappPanel">
+            <span class="wa-icon" aria-hidden="true"></span>
+            <span class="sr-only">Abrir menu do WhatsApp</span>
+        </button>
+        <div class="whatsapp-panel" id="whatsappPanel" hidden>
+            <strong>Atendimento rapido</strong>
+            <p>Envie seu pedido pronto ou chame a Lucimara no WhatsApp.</p>
+            <button id="quickWhatsapp" type="button">Enviar resumo do pedido</button>
+        </div>
+    </div>
+
+    <template id="emptyCartTemplate">
+        <p class="empty-state">Seu carrinho esta vazio. Escolha algum doce do cardapio do dia.</p>
+    </template>
+
+    <script src="script.js"></script>
+</body>
+</html>

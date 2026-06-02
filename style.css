@@ -287,9 +287,8 @@ section {
 }
 
 .switch-row input,
-.radio-row input[type="radio"] {
-    margin: 0;
-    flex-shrink: 0;
+.radio-row input {
+    accent-color: var(--pink-500);
 }
 
 .ghost-button {
@@ -612,7 +611,6 @@ section {
     display: grid;
     gap: 14px;
 }
-
 
 .customer-form label,
 .customer-form fieldset {

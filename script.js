@@ -1,3 +1,14 @@
+import { db } from "./firebase.js";
+
+import {
+    collection,
+    doc,
+    setDoc,
+    getDocs,
+    onSnapshot
+}
+from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
+
 const WHATSAPP_NUMBER = "5518981010315";
 const DELIVERY_FEE = 6;
 const PRODUCT_VERSION = "real-photos-2026-06-02";
@@ -64,7 +75,7 @@ const initialProducts = [
     },
 ];
 
-let products = loadProducts();
+let products = [];
 let cart = JSON.parse(localStorage.getItem("lucimaraCart")) || {};
 let activeCategory = "Todos";
 
@@ -92,16 +103,16 @@ const adminUser = document.getElementById("adminUser");
 const adminPassword = document.getElementById("adminPassword");
 const loginError = document.getElementById("loginError");
 
-function loadProducts() {
-    const saved = localStorage.getItem("lucimaraProducts");
-    const savedVersion = localStorage.getItem("lucimaraProductVersion");
-    if (saved && savedVersion === PRODUCT_VERSION) return JSON.parse(saved);
+//function loadProducts() {
+  //  const saved = localStorage.getItem("lucimaraProducts");
+    //const savedVersion = localStorage.getItem("lucimaraProductVersion");
+    //if (saved && savedVersion === PRODUCT_VERSION) return JSON.parse(saved);
 
-    localStorage.setItem("lucimaraProductVersion", PRODUCT_VERSION);
-    localStorage.setItem("lucimaraProducts", JSON.stringify(getInitialProducts()));
-    localStorage.removeItem("lucimaraCart");
-    return getInitialProducts();
-}
+    //localStorage.setItem("lucimaraProductVersion", PRODUCT_VERSION);
+    //localStorage.setItem("lucimaraProducts", JSON.stringify(getInitialProducts()));
+    //localStorage.removeItem("lucimaraCart");
+    //return getInitialProducts();
+//} 
 
 function getInitialProducts() {
     return JSON.parse(JSON.stringify(initialProducts));

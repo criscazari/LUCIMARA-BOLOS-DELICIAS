@@ -31,7 +31,7 @@ const initialProducts = [
     },
     {
         id: "bolo-fuba",
-        name: "Bolo Caseiro",
+        name: "Bolo de Fubá",
         description: "Bolo alto, fofinho e perfeito para o cafe.",
         price: 25,
         category: "Bolos",
@@ -43,7 +43,7 @@ const initialProducts = [
     {
         id: "pao-caseiro",
         name: "Pão Caseiro",
-        description: "Massa amarelinha, macia e com sabor de bolo feito em casa.",
+        description: "Delicioso pão caseiro, muito macio.",
         price: 8,
         category: "Paes",
         available: true,
@@ -54,7 +54,7 @@ const initialProducts = [
     {
         id: "bolo-chocolate",
         name: "Bolo de Chocolate",
-        description: "Massa de chocolate com cobertura cremosa e brilhante.",
+        description: "Bolo de chocolate caseirinho.",
         price: 30,
         category: "Bolos",
         available: true,

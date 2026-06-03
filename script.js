@@ -115,47 +115,35 @@ const loginError = document.getElementById("loginError");
 //} 
 
 function getInitialProducts() {
-
     return JSON.parse(JSON.stringify(initialProducts));
+}
 
 async function saveProducts() {
-
     for (const product of products) {
-
         await setDoc(
             doc(db, "produtos", product.id),
             product
         );
-
     }
-
 }
 
 async function initializeFirestore() {
-
-    const snapshot =
-        await getDocs(collection(db, "produtos"));
+    const snapshot = await getDocs(collection(db, "produtos"));
 
     if (snapshot.empty) {
-
         for (const product of initialProducts) {
-
             await setDoc(
                 doc(db, "produtos", product.id),
                 product
             );
-
         }
-
     }
-
-}
 }
 
-function saveProducts() {
-    localStorage.setItem("lucimaraProductVersion", PRODUCT_VERSION);
-    localStorage.setItem("lucimaraProducts", JSON.stringify(products));
-}
+//function saveProducts() {
+  //  localStorage.setItem("lucimaraProductVersion", PRODUCT_VERSION);
+    //localStorage.setItem("lucimaraProducts", JSON.stringify(products));
+//}
 
 function saveCart() {
     localStorage.setItem("lucimaraCart", JSON.stringify(cart));
@@ -438,26 +426,12 @@ adminGrid.addEventListener("change", (event) => {
     if (!product) return;
 
     product[input.dataset.admin] = input.checked;
+
     if (!product.available) delete cart[product.id];
     if (product.soldOut) delete cart[product.id];
 
     saveProducts();
     saveCart();
-    initializeFirestore().then(() => {
-
-    onSnapshot(
-        collection(db, "produtos"),
-        (snapshot) => {
-
-            products =
-                snapshot.docs.map(doc => doc.data());
-
-            renderAll();
-
-        }
-    );
-
-});
 });
 
 document.getElementById("clearCart").addEventListener("click", () => {
@@ -472,10 +446,13 @@ document.getElementById("quickWhatsapp").addEventListener("click", openWhatsapp)
 
 document.getElementById("resetProducts").addEventListener("click", () => {
     if (!confirm("Restaurar a lista inicial de produtos?")) return;
+
     products = getInitialProducts();
     cart = {};
+
     saveProducts();
     saveCart();
+
     activeCategory = "Todos";
     renderAll();
 });
@@ -546,4 +523,20 @@ document.getElementById("nextFeatured").addEventListener("click", () => {
     featuredTrack.scrollBy({ left: featuredTrack.clientWidth * 0.8, behavior: "smooth" });
 });
 
-renderAll();
+initializeFirestore().then(() => {
+
+    onSnapshot(
+        collection(db, "produtos"),
+        (snapshot) => {
+
+            products = snapshot.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data()
+            }));
+
+            renderAll();
+
+        }
+    );
+
+});

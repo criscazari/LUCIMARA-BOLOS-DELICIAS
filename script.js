@@ -115,7 +115,41 @@ const loginError = document.getElementById("loginError");
 //} 
 
 function getInitialProducts() {
+
     return JSON.parse(JSON.stringify(initialProducts));
+
+async function saveProducts() {
+
+    for (const product of products) {
+
+        await setDoc(
+            doc(db, "produtos", product.id),
+            product
+        );
+
+    }
+
+}
+
+async function initializeFirestore() {
+
+    const snapshot =
+        await getDocs(collection(db, "produtos"));
+
+    if (snapshot.empty) {
+
+        for (const product of initialProducts) {
+
+            await setDoc(
+                doc(db, "produtos", product.id),
+                product
+            );
+
+        }
+
+    }
+
+}
 }
 
 function saveProducts() {
@@ -409,7 +443,21 @@ adminGrid.addEventListener("change", (event) => {
 
     saveProducts();
     saveCart();
-    renderAll();
+    initializeFirestore().then(() => {
+
+    onSnapshot(
+        collection(db, "produtos"),
+        (snapshot) => {
+
+            products =
+                snapshot.docs.map(doc => doc.data());
+
+            renderAll();
+
+        }
+    );
+
+});
 });
 
 document.getElementById("clearCart").addEventListener("click", () => {

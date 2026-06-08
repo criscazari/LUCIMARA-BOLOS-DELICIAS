@@ -55,7 +55,7 @@ const initialProducts = [
         id: "bolo-chocolate",
         name: "Bolo de Chocolate",
         description: "Bolo de chocolate caseirinho.",
-        price: 30,
+        price: 20,
         category: "Bolos",
         available: true,
         soldOut: false,

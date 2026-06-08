@@ -14,7 +14,7 @@ const DELIVERY_FEE = 6;
 const PRODUCT_VERSION = "real-photos-2026-06-02";
 const ADMIN_USERS = [
     { user: "adminLu", password: "senha26" },
-    { user: "admin", password: "AdmTi26" },
+    { user: "admin", password: "Cazaryh91!" },
 ];
 
 const initialProducts = [
@@ -106,17 +106,7 @@ const initialProducts = [
     desired: false,
     image: "assets/Bolo de Fuba.jpg",
 },
-{
-    id: "caseiros",
-    name: "Bolos Caseiros",
-    description: "Variedade de bolos caseiros preparados diariamente.",
-    price: 25,
-    category: "Bolos",
-    available: true,
-    soldOut: false,
-    desired: false,
-    image: "assets/Caseiros.jpg",
-},
+
 {
     id: "copo-felicidade-dois-amores",
     name: "Copo da Felicidade Dois Amores com Morango",

@@ -63,7 +63,7 @@ const initialProducts = [
         image: "assets/bolo-chocolate.jpg",
     },
     {
-        id: "bolo-chocolate-brigadeiro",
+        id: "bolo-cenoura-chocolate",
         name: "Bolo de Cenoura com Chocolate",
         description: "Bolo de cenoura com cobertura generosa de chocolate.",
         price: 10,
@@ -71,7 +71,7 @@ const initialProducts = [
         available: true,
         soldOut: false,
         desired: true,
-        image: "assets/bolo-chocolate-brigadeiro.png",
+        image: "assets/bolo-cenoura-chocolate.jpg",
     },
     {
     id: "bolo-caseiro-leite-ninho",

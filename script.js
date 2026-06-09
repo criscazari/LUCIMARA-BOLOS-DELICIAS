@@ -248,7 +248,7 @@ const initialProducts = [
     available: true,
     soldOut: false,
     desired: true,
-    image: "assets/copo-brownie-pudim.jpg",
+    image: "assets/gelinho-pacoquita.jpg",
 }
 ];
 

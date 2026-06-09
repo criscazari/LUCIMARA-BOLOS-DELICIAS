@@ -227,6 +227,28 @@ const initialProducts = [
     soldOut: false,
     desired: true,
     image: "assets/pudim-leiteninho.jpg",
+},
+{
+    id: "copo-brownie-pudim",
+    name: "Copo Brownie com Pudim",
+    description: "Copo brownie com pudim cremoso com sabor irresistível de leite ninho.",
+    price: 20,
+    category: "Sobremesas",
+    available: true,
+    soldOut: false,
+    desired: true,
+    image: "assets/copo-brownie-pudim.jpg",
+},
+{
+    id: "gelinho-pacoquita",
+    name: "Gelinho Paçoquita",
+    description: "Gelinho gourmet sabor paçoquita, irresistível.",
+    price: 12,
+    category: "Sobremesas",
+    available: true,
+    soldOut: false,
+    desired: true,
+    image: "assets/copo-brownie-pudim.jpg",
 }
 ];
 

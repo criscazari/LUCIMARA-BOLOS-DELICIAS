@@ -95,17 +95,6 @@ const initialProducts = [
     desired: false,
     image: "assets/Bolo Mesclado.jpg",
 },
-{
-    id: "bolo-de-fuba",
-    name: "Bolo de Fubá Especial",
-    description: "Tradicional bolo de fubá, perfeito para acompanhar um café.",
-    price: 20,
-    category: "Bolos",
-    available: true,
-    soldOut: false,
-    desired: false,
-    image: "assets/Bolo de Fuba.jpg",
-},
 
 {
     id: "copo-felicidade-dois-amores",
